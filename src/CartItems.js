@@ -11,9 +11,25 @@ class CartItems extends React.Component{
         }
     }
     increaseQnt=()=>{
-       this.state.qnt+=1;
+        // first way to use setState function
+    //    this.setState({
+    //     qnt:this.state.qnt+1
+    //    })
+
+    // second way to use setState sunction
+    this.setState((prevState)=>{
+       return{qnt:prevState.qnt+1} 
+    })
     }
     DecreaseQnt=()=>{
+        if(this.state.qnt>0){
+            this.setState({
+            
+                qnt:this.state.qnt-1
+                
+            })
+        }
+       
 
     }
    
