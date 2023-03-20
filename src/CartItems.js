@@ -18,7 +18,7 @@ class CartItems extends React.Component{
 
     // second way to use setState sunction
     this.setState((prevState)=>{
-       return{qnt:prevState.qnt+1} 
+       return{qnt:prevState.qnt+3} 
     })
     }
     DecreaseQnt=()=>{
@@ -44,7 +44,7 @@ class CartItems extends React.Component{
                   <p style={{color:"#777"}}>Qnt:{this.state.qnt}</p>
                   <p style={{color:"#777"}}>Price:{this.state.price}</p>
                   <div>
-                  handleDecrease
+                  
                     <span>
                       <img onClick={this.DecreaseQnt} className='img-size' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1kn47X4eHe3_OmZ0Aqn-m8y7JcEtjuDTN_lilsUX335xQM0cowHUwIIr5JdGpr5DKpOU&usqp=CAU" alt="" />
                       <img onClick={this.increaseQnt} className='img-size'  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-qrFjzV8myUPPd9EiPJ2Ou3URrNKs-R0pv7e_NuTyGJIVvYt0g7Ihlekv6UVdNkE913w&usqp=CAU" alt="" />
