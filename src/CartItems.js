@@ -1,12 +1,11 @@
-import React from "react";
+
 import './index'
-class CartItems extends React.Component{
+const CartItems =(props)=>{
    
-  render()
-        {
-            console.log(this.props);
-            const {product,qntOnChangeDecrease,qntOnChangeIncrease,deleteItems} = this.props
-            const {title, price, qnt, img,id} = this.props.product;
+ 
+            console.log(props);
+            const {product,qntOnChangeDecrease,qntOnChangeIncrease,deleteItems} = props
+            const {title, price, qnt, img,id} = props.product;
             return(
                 <div className='cart'>
                 <img className='product-img' src={img} alt="" />
@@ -25,7 +24,7 @@ class CartItems extends React.Component{
                 </div>
               </div>
             )
-        }
+        
            
       
         
