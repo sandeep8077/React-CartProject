@@ -41,36 +41,65 @@ class App extends React.Component {
         // console.log("work Increase functionality", product);
         const { products } = this.state;
         const index = products.indexOf(product)
-        products[index].Qty += 1;
+        // products[index].Qty += 1;
 
-        this.setState({
-            products: products
+        // this.setState({
+        //     products: products
+        // })
+        // get reference  of that particular document in firebase
+        const docRef = firebase.firestore().collection('products')
+        .doc(products[index].id)
+        docRef.update({
+          Qty:products[index].Qty+1
         })
+        .then(()=>{console.log('updated succefully')})
+        .catch((err)=>{console.log('error',err)})
     }
 
     // decreasing qnt of products
     handleDecreaseQnt = (product) => {
         // console.log("decreasing quantity is work", product);
 
-        if (product.Qty > 0) {
+        
             const { products } = this.state;
             const index = products.indexOf(product);
-            products[index].Qty -= 1;
-            this.setState({
-                products: products
-            })
-        }
+
+            // products[index].Qty -= 1;
+            // this.setState({
+            //     products: products
+            // })
+              // get reference  of that particular document in firebase
+              if(products[index].Qty===0){
+                return;
+              }
+                const docRef = firebase.firestore().collection('products').doc(products[index].id)
+              docRef.update({
+              
+                Qty:products[index].Qty-1
+              
+               
+              })
+              
+              
+
+        
     }
 
     // handle delete item from the cart
     handleDeleteItem = (id) => {
         const { products } = this.state;
-        const items = products.filter((item) => { return (item.id !== id) }
+        // const items = products.filter((item) => { return (item.id !== id) }
 
-        )
-        this.setState({
-            products: items
-        })
+        // )
+        // this.setState({
+        //     products: items
+        // })
+         const docRef = firebase.firestore().collection('products').doc(id);
+         docRef.delete()
+         .then(()=>{console.log('deleted successfully')})
+         .catch((err)=>{
+          console.log("Error to delete product")
+         })
     }
 
     // count the cart items 
