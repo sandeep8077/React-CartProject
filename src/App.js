@@ -94,13 +94,31 @@ class App extends React.Component {
     }
 
 
+    handleAdd=()=>{
+      firebase
+      .firestore()
+      .collection('products')
+      .add({
+        img:"",
+        Qty:5,
+        price:500,
+        title:"Belt"
+
+      })
+      .then((docRef)=>{
+        console.log("Added product is",docRef);
+      })
+      .catch((err)=>{console.log('Error is',err)})
+    }
+
 
     render() {
         const { products,loading } = this.state;
         return (
            <div className = "App" >
-
+           
             <NavBar count = { this.getCount() }/>
+            <button onClick={this.handleAdd} style={{padding:'5px', fontSize:'25px'}}>Add data</button>
             <Cart products = { products }
             qntOnChangeIncrease = { this.handleIncreaseQty }
             qntOnChangeDecrease = { this.handleDecreaseQnt }
